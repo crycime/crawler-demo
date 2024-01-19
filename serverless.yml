@@ -1,0 +1,31 @@
+org: crycime
+app: crawler
+service:
+  name: crawler-demo
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-plugin-optimize
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  ecr:
+    images:
+      baseimage:
+        path: ./
+        file: Dockerfile
+      # platform: linux/amd64
+      # Uncomment the above line if you are using Apple M1
+
+functions:
+  main:
+    handler: src/lambda.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'

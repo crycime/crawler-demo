@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET /app/crawler success cases should return crawler response 1`] = `
+Object {
+  "colorList": Array [
+    "grey",
+    "black",
+    "brown",
+  ],
+  "descriptionList": Array [
+    "Stay warm in style with our Faux Suede Hooded Puffer Jacket. It features a unique faux suede material, puffer design, and hooded and zipper closure for extra comfort",
+    " Model is 5'9 wearing 2XL",
+  ],
+  "imageUrlList": Array [
+    "https://www.latenitex.com/cdn/shop/products/1709514.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/products/1709509.jpg?v=1681225942&width=416",
+    "https://www.latenitex.com/cdn/shop/products/O1CN011B35HS25oUC611F92__2208113727573_1.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/products/1709512.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/products/1709511.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/products/O1CN01sDMe6T25oUC5rMXZX__2208113727573.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/products/O1CN01BtSUou25oUBxlvma4__2208113727573.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/products/1709513.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/products/1709503.jpg?v=1682065442&width=416",
+    "https://www.latenitex.com/cdn/shop/files/O1CN01TfZZqM25oUByNOdaq__2208113727573_480x480_cd9bdcec-c43b-4b4a-abaf-74869511166d.jpg?v=1690109087&width=416",
+    "https://www.latenitex.com/cdn/shop/files/O1CN01kB6DCi25oUC2lR1sr__2208113727573_480x480_eaf325b7-8276-4aba-9038-b351299d29ad.jpg?v=1690109100&width=416",
+  ],
+  "measure": Array [
+    Object {
+      "CHEST": "48.5",
+      "LENGTH": "27.5",
+      "SIZE": "S",
+      "SLEEVE": "30",
+    },
+    Object {
+      "CHEST": "50.5",
+      "LENGTH": "28.5",
+      "SIZE": "M",
+      "SLEEVE": "30.5",
+    },
+    Object {
+      "CHEST": "52",
+      "LENGTH": "29",
+      "SIZE": "L",
+      "SLEEVE": "31.5",
+    },
+    Object {
+      "CHEST": "53.5",
+      "LENGTH": "30",
+      "SIZE": "XL",
+      "SLEEVE": "32",
+    },
+    Object {
+      "CHEST": "55",
+      "LENGTH": "30.5",
+      "SIZE": "2XL",
+      "SLEEVE": "33",
+    },
+    Object {
+      "CHEST": "56.5",
+      "LENGTH": "31.5",
+      "SIZE": "3XL",
+      "SLEEVE": "34",
+    },
+  ],
+  "originalPrice": "$199.00",
+  "preferentialPrice": "$139.30",
+  "sizeList": Array [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+  ],
+  "title": "Faux Suede Hooded Puffer Jacket",
+}
+`;

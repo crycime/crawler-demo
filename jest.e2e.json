@@ -1,0 +1,19 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "roots": ["<rootDir>/__tests__/"],
+  "testEnvironment": "node",
+  "testRegex": ".e2e.spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "globals": {
+    "ts-jest": {
+      "diagnostics": {
+        "warnOnly": true,
+        "pathRegex": "\\.(spec|test)\\.ts$"
+      }
+    }
+  },
+  "setupFiles": ["<rootDir>/src/jest-setup-files.ts"]
+}
