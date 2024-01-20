@@ -24,7 +24,7 @@ async function bootstrap() {
       .setVersion('1.0')
       .build();
     SwaggerModule.setup(
-      '/',
+      '/swagger',
       nestApp,
       SwaggerModule.createDocument(nestApp, swaggerConfig),
     );
