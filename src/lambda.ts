@@ -5,6 +5,7 @@ import { Context, Handler } from 'aws-lambda';
 import express from 'express';
 
 import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 let cachedServer: Handler;
 
@@ -17,6 +18,16 @@ async function bootstrap() {
     );
 
     nestApp.enableCors();
+    const swaggerConfig = new DocumentBuilder()
+      .setTitle('crawler-demo')
+      .setDescription('API Documentation')
+      .setVersion('1.0')
+      .build();
+    SwaggerModule.setup(
+      '/',
+      nestApp,
+      SwaggerModule.createDocument(nestApp, swaggerConfig),
+    );
 
     await nestApp.init();
 
