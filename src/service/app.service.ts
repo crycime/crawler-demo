@@ -14,8 +14,9 @@ export class AppService {
       await page.goto(
         'https://www.latenitex.com/products/faux-suede-hooded-puffer-jacket?variant=43895596613871',
       );
+      //
       const liElements = await page.$$(
-        '#Slider-Thumbnails-template--17140330889455__main li',
+        '.product__media-list.contains-media.grid.grid--peek.list-unstyled.slider.slider--mobile li',
       );
       const imageUrlList: any[] = [];
       await Promise.all(
@@ -28,25 +29,25 @@ export class AppService {
       //
       const title = await page
         .locator(
-          '#ProductInfo-template--17140330889455__main > div.product__title > h1',
+          '.product__info-container.product__column-sticky > div.product__title > h1',
         )
         .innerText();
       //
       const originalPrice = await page
         .locator(
-          '#price-template--17140330889455__main > div > div > div.price__sale > span:nth-child(2) > s',
+          '.price.price--large.price--on-sale.price--show-badge > div > div.price__sale > span:nth-child(2) > s',
         )
         .innerText();
       //
       const preferentialPrice = await page
         .locator(
-          '#price-template--17140330889455__main > div > div > div.price__sale > span.price-item.price-item--sale.price-item--last',
+          '.price.price--large.price--on-sale.price--show-badge > div > div.price__sale > span.price-item.price-item--sale.price-item--last',
         )
         .innerText();
       //
       const colorList: any[] = [];
       const colorElements = await page.$$(
-        '#variant-radios-template--17140330889455__main > fieldset:nth-child(1) label',
+        'variant-radios > fieldset:nth-child(1) label',
       );
       await Promise.all(
         colorElements.map(async (labelElement) => {
@@ -57,7 +58,7 @@ export class AppService {
       //
       const sizeList: any[] = [];
       const sizeElements = await page.$$(
-        '#variant-radios-template--17140330889455__main > fieldset:nth-child(2) label',
+        'variant-radios > fieldset:nth-child(2) label',
       );
       await Promise.all(
         sizeElements.map(async (labelElement) => {
@@ -68,7 +69,7 @@ export class AppService {
       //
       const descriptionList: any[] = [];
       const descriptionElements = await page.$$(
-        '#ProductInfo-template--17140330889455__main > div.product__description.rte.quick-add-hidden > p',
+        'product-info > div.product__description.rte.quick-add-hidden > p',
       );
       await Promise.all(
         descriptionElements.map(async (labelElement) => {
@@ -77,13 +78,10 @@ export class AppService {
         }),
       );
       //
-      await page.waitForSelector(
-        '#ProductInfo-template--17140330889455__main > div.product__description.rte.quick-add-hidden > div.ks-chart-container.sizing-chart-container > div > div > div.ks-table-content-wrapper.ks-toggle-style-1 > div.ks-table-wrapper > table > tbody > tr:nth-child(1)',
-        { state: 'visible' },
-      );
-      const rows = await page.$$(
-        '#ProductInfo-template--17140330889455__main > div.product__description.rte.quick-add-hidden > div.ks-chart-container.sizing-chart-container > div > div > div.ks-table-content-wrapper.ks-toggle-style-1 > div.ks-table-wrapper > table > tbody > .ks-table-row',
-      );
+      await page.waitForSelector('table > tbody > tr:nth-child(1)', {
+        state: 'visible',
+      });
+      const rows = await page.$$('table > tbody > .ks-table-row');
       const data = await Promise.all(
         rows.map(async (row) => {
           const columns = await row.$$('.ks-table-cell');
