@@ -22,6 +22,9 @@ export class AppCrawlerGetResDto {
   title: string;
 
   @ApiProperty()
+  price: string;
+
+  @ApiProperty()
   originalPrice: string;
 
   @ApiProperty()

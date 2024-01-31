@@ -1,7 +1,9 @@
 org: crycime
 app: crawler
-service:
-  name: crawler-demo
+service: crawler-demo
+
+package:
+  individually: true
 
 plugins:
   - serverless-plugin-typescript
@@ -10,6 +12,7 @@ plugins:
 
 provider:
   name: aws
+  deploymentMethod: direct
   runtime: nodejs16.x
   ecr:
     images:

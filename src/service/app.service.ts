@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import * as playwright from 'playwright-aws-lambda';
 import * as _ from 'lodash';
 import { AppCrawlerGetResDto } from '../dto/appCrawlerGetRes.dto';
+import { ChromiumBrowser } from 'playwright-core';
 
 @Injectable()
 export class AppService {
   async crawler(): Promise<AppCrawlerGetResDto> {
-    let browser = null;
+    let browser: ChromiumBrowser = null;
     try {
       browser = await playwright.launchChromium({ headless: true });
       const context = await browser.newContext();
@@ -27,23 +28,25 @@ export class AppService {
         }),
       );
       //
-      const title = await page
-        .locator(
-          '.product__info-container.product__column-sticky > div.product__title > h1',
-        )
-        .innerText();
+      const titleElement = await page.$(
+        '.product__info-container.product__column-sticky > div.product__title > h1',
+      );
+      const title = await titleElement?.innerText();
       //
-      const originalPrice = await page
-        .locator(
-          '.price.price--large.price--on-sale.price--show-badge > div > div.price__sale > span:nth-child(2) > s',
-        )
-        .innerText();
+      const priceElement = await page.$(
+        'div.price__container > div.price__regular > span.price-item.price-item--regular',
+      );
+      const price = await priceElement?.innerText();
       //
-      const preferentialPrice = await page
-        .locator(
-          '.price.price--large.price--on-sale.price--show-badge > div > div.price__sale > span.price-item.price-item--sale.price-item--last',
-        )
-        .innerText();
+      const originalPriceElement = await page.$(
+        '.price.price--large.price--on-sale.price--show-badge > div > div.price__sale > span:nth-child(2) > s',
+      );
+      const originalPrice = await originalPriceElement?.innerText();
+      //
+      const preferentialPriceElement = await page.$(
+        '.price.price--large.price--on-sale.price--show-badge > div > div.price__sale > span.price-item.price-item--sale.price-item--last',
+      );
+      const preferentialPrice = await preferentialPriceElement?.innerText();
       //
       const colorList: any[] = [];
       const colorElements = await page.$$(
@@ -100,6 +103,7 @@ export class AppService {
       return {
         imageUrlList,
         title,
+        price,
         originalPrice,
         preferentialPrice,
         colorList,
